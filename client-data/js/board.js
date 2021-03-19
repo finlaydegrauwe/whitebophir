@@ -623,21 +623,6 @@ Tools.setSize = (function size() {
 
 Tools.getSize = (function () { return Tools.setSize() });
 
-Tools.getOpacity = (function opacity() {
-	var chooser = document.getElementById("chooseOpacity");
-	var opacityIndicator = document.getElementById("opacityIndicator");
-
-	function update() {
-		opacityIndicator.setAttribute("opacity", chooser.value);
-	}
-	update();
-
-	chooser.onchange = chooser.oninput = update;
-	return function () {
-		return Math.max(0.1, Math.min(1, chooser.value));
-	};
-})();
-
 
 //Scale the canvas on load
 Tools.svg.width.baseVal.value = document.body.clientWidth;
