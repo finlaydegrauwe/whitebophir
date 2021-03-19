@@ -104,7 +104,7 @@
         Tools.svg.insertBefore(gridContainer, Tools.drawingArea);
         return gridContainer;
     })();
-
+/*
     Tools.add({ //The new tool
         "name": "Grid",
         "shortcut": "g",
@@ -114,5 +114,5 @@
         "onstart": toggleGrid,
         "mouseCursor": "crosshair",
     });
-
+*/
 })(); //End of code isolation
