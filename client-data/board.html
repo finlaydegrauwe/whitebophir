@@ -21,6 +21,8 @@
 	<link rel="alternate" hreflang="{{.}}" href="{{../boardUriComponent}}?lang={{.}}" />
 	{{/languages}}
 	<script src="../polyfill.min.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -33,9 +35,34 @@
 		</svg>
 	</div>
 
-	<div id="loadingMessage">{{translations.loading}}</div>
+	<!--<div id="loadingMessage" class="overlay">{{translations.loading}}</div>-->
+	<div title="Close this box" id="infoheader" class="overlay" onclick="hideDialog(infoheader)"><strong>Hello my close but distant friend!</strong><br><br>
+		Here you see the blueprint of an empty building in Sarajevo. This summer a few 100 people will come together to
+		transform this space into a social- and cultural centre for the youth of Sarajevo. By using the tools on the
+		left you’re invited to join the dialogue of shaping this space into a meaningful cultural hub where people can
+		come and share time together. <strong>Draw, write, vote & contribute!</strong><br><br><i>Click/tap this message to dismiss</i></div>
+	<div id="qrcode" class="overlay"><a href="https://spc.web.app/">https://spc.web.app/</a><br><img onclick="hideDialog(qrcode)" title="Close this box" href="#" src="https://i2.wp.com/www.mathematices.be/wp-content/uploads/2019/11/t%C3%A9l%C3%A9chargement.png?resize=256%2C256&ssl=1" width="100%"></div>
+	<div id="foot" class="overlay"><a href="#" onclick="showHelp()"><b>Help</b></a><a href="#">Why?</a><a href="mailto:finlay.degrauwe+spc@student.luca-arts.be?subject=Feedback Shaping The City platform" target="_blank">Feedback</a></div>
+	<div id="help" class="overlay">
+		<section>
+		<strong>Here is an explanation of all the tools u can use to make your dreams come alive</strong>
+		<br><i><small>By clicking/tapping another time OR by holding "Shift &uarr;" you can activate secondary functions.</small></i>
+		<br><br><strong>Navigating</strong>
+		<div><img src="tools/hand/hand.svg" width="35px"><p>With the hand tool you can navigate across the board.<br><i>Secondary function: move objects.</i></p></div>
+		<div><img src="tools/zoom/icon.svg" width="35px"><p>By scrolling OR pinching you can zoom in and out on the board.<br></p></div>
 
-	<div id="menu" {{#hideMenu}}style="display:none;"{{/hideMenu}}>
+		<strong>Drawing</strong>
+		<div><img src="tools/pencil/icon.svg" width="35px"><p>With the pencil tool you can draw whatever you please.<br><i>Secondary function: draw with white.</i></p></div>
+		<div><img src="tools/line/icon.svg" width="35px"><p>With the line tool you can draw straight lines.<br><i>Secondary function: draw lines with straight angles.</i></p></div>
+		<div><img src="tools/rect/icon.svg" width="35px"><p>With the rectangle tool you can draw rectangles.<br><i>Secondary function: draw squares.</i></p></div>
+		<div><img src="tools/ellipse/icon-ellipse.svg" width="35px"><p>With the ellipse tool you can draw ellipses.<br><i>Secondary function: draw circles.</i></p></div>
+		<div><img src="tools/text/icon.svg" width="35px"><p>With the text tool you can type text, symbols or emoji's.</p></div>
+		<div><img src="tools/eraser/icon.svg" width="35px"><p>With the eraser tool you can delete drawings with one click. <i>Be careful!</i></p></div>
+		<div><img src="tools/cursor/color-wheel.svg" width="33px"><p>By pressing the colored circle you can change the color you draw in.</p></div>
+	</section>
+	</div>
+	
+	<div id="menu" {{#hideMenu}}style="display:none;" {{/hideMenu}}>
 		<div id="menuItems">
 			<ul id="tools" class="tools">
 				<li class="tool" tabindex="-1">
@@ -44,16 +71,17 @@
 					<img class="tool-icon secondaryIcon" width="35" height="35" src="data:," alt="icon" />
 				</li>
 			</ul>
-
 			<ul class="tools" id="settings">
+				<hr>
 				<li class="tool" tabindex="-1">
-					<input class="tool-icon" type="color" id="chooseColor" value="#1913B0" />
+					<div id="input-color-container"><input class="tool-icon" type="color" id="chooseColor"
+							value="#1913B0" /></div>
 					<label class="tool-name" for="chooseColor">{{translations.color}}</label>
 					<span class="colorPresets" id="colorPresetSel">
 						<span class="colorPresetButton"></span>
 					</span>
 				</li>
-				<li class="tool" tabindex="-1"
+				<!--<li class="tool" tabindex="-1"
 					title="{{translations.size}} ({{translations.keyboard_shortcut}}: alt + {{translations.mousewheel}})">
 					<img class="tool-icon" width="60" height="60" src="icon-size.svg" alt="size" />
 					<label class="tool-name slider" for="chooseSize">
@@ -78,12 +106,28 @@
 						<input type="range" id="chooseOpacity" value="1" min="0.2" max="1" step="0.1"
 							class="rangeChooser" />
 					</label>
-				</li>
+				</li>-->
 			</ul>
 		</div>
 	</div>
 
-
+	<script>
+		function hideDialog(y) {
+			if (y.style.display === "none") {
+				y.style.display = "block";
+			} else {
+				y.style.display = "none";
+			}
+		}
+		function showHelp(){
+			var x = document.getElementById("help")
+			if (x.style.display === "flex") {
+				x.style.display = "none";
+			} else {
+				x.style.display = "flex";
+			}
+		}
+	</script>
 	<script type="application/json" id="translations">{{{ json translations }}}</script>
 	<script type="application/json" id="configuration">{{{ json configuration }}}</script>
 	<script src="../js/path-data-polyfill.js"></script>

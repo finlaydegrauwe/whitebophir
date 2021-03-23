@@ -73,8 +73,8 @@ Tools.connect = function () {
 	//Receive draw instructions from the server
 	this.socket.on("broadcast", function (msg) {
 		handleMessage(msg).finally(function afterload() {
-			var loadingEl = document.getElementById("loadingMessage");
-			loadingEl.classList.add("hidden");
+			//var loadingEl = document.getElementById("loadingMessage");
+			//loadingEl.classList.add("hidden");
 		});
 	});
 
@@ -603,28 +603,27 @@ Tools.colorPresets.forEach(Tools.HTML.addColorButton.bind(Tools.HTML));
 
 Tools.sizeChangeHandlers = [];
 Tools.setSize = (function size() {
-	var chooser = document.getElementById("chooseSize");
+	chooser = 5; //defaultsize
 
 	function update() {
-		var size = Math.max(1, Math.min(50, chooser.value | 0));
-		chooser.value = size;
+		var size = Math.max(1, Math.min(50, chooser | 0));
+		chooser = size;
 		Tools.sizeChangeHandlers.forEach(function (handler) {
 			handler(size);
 		});
 	}
 	update();
 
-	chooser.onchange = chooser.oninput = update;
 	return function (value) {
-		if (value !== null && value !== undefined) { chooser.value = value; update(); }
-		return parseInt(chooser.value);
+		if (value !== null && value !== undefined) { chooser = value; update(); }
+		return parseInt(chooser);
 	};
 })();
 
 Tools.getSize = (function () { return Tools.setSize() });
 
 Tools.getOpacity = (function opacity() {
-	var chooser = document.getElementById("chooseOpacity");
+	/*var chooser = document.getElementById("chooseOpacity");
 	var opacityIndicator = document.getElementById("opacityIndicator");
 
 	function update() {
@@ -632,9 +631,9 @@ Tools.getOpacity = (function opacity() {
 	}
 	update();
 
-	chooser.onchange = chooser.oninput = update;
+	chooser.onchange = chooser.oninput = update;*/
 	return function () {
-		return Math.max(0.1, Math.min(1, chooser.value));
+		return Math.max(0.1, 1);
 	};
 })();
 
