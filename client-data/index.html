@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>WBO — {{translations.collaborative_whiteboard}}</title>
+	<title>Shaping The City</title>
 	<link rel="stylesheet" href="index.css" />
 	<meta name="description" content="{{translations.tagline}}" />
 	<meta name="keywords"
@@ -19,12 +19,17 @@
 	<link rel="alternate" hreflang="{{.}}" href="?lang={{.}}" />{{/languages}}
 	<link rel="manifest" href="manifest.json">
 	<meta name="theme-color" content="#C4DFFF" />
+	<link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
 
 	<header>
-		<h1>WBO</h1>
+		<img src="SPC-Logo.png" width="48px" height="48px">
+		<h3 id="title"><strong>Shaping The City</strong></h3>
+		<h3><strong><a href="Project introduction styled.pdf">More info</a></strong></h3>
+		<!--
 		<nav class="lang-selector">
 			<span>{{language}}</span>
 			<ul>
@@ -33,15 +38,12 @@
 				{{/languages}}
 			</ul>
 		</nav>
+	-->
 	</header>
 
 	<main>
-		<div id="description">
-			<h3>{{translations.index_title}}</h3>
-			<p>{{{translations.introduction_paragraph}}}</p>
-			<p>{{{translations.share_instructions}}}</p>
-		</div>
-
+		<img src="drawing_example.png" width="100%">
+		<!--
 		<div>
 			<p>{{{translations.public_board_description}}}</p>
 			<a href="boards/anonymous" class="wbo-button">{{{translations.open_public_board}}}</a>
@@ -59,15 +61,33 @@
 				<input type="submit" value="Go">
 			</form>
 		</div>
+		-->
 	</main>
 
+	<div id="explanation" class="overlay">
+		<p>Welcome to the Shaping The City platform!</p>
+		<p>Shaping The City is a participative project about placemaking in vacant spaces. Through research and interactions
+		Finlay Degrauwe aims to build a platform that could help communities ideate about empty spaces.</p>
+		<strong>Have fun!</strong>
+	</div>
 
-	<footer>
-		<a href="https://www.instagram.com/wbo_whiteboard/" class="smallink" rel="external" title="Instagram"><img
-				alt="instagram" src="instagram.svg" width="30" height="30" /></a>
-		<a href="https://github.com/lovasoa/whitebophir" class="smallink" rel="external"
-			title="{{translations.view_source}}"><img alt="github" src="github.svg" width="30" height="30" />
+	<div id="cta" class="overlay"><h3>This summer Toestand International will go to Sarajevo. We’re drawing possible plans for spaces in Sarajevo.</h3><a href="boards/anonymous">I want to draw! ></a></div>
+
+	<footer class="overlay">
+		<p>Shaping The City is a project of Finlay Degrauwe in contribution with LUCA School of Arts, VZW Toestand &
+			Arts in Society Awards. This website is based on the work of <a
+				href="https://github.com/lovasoa/whitebophir">Ophir Lojkine</a>.</p>
+		<a href="https://www.luca-arts.be" class="smallink" rel="external" title="LUCA School of Arts"><img
+				alt="Luca logo" src="luca_logo.png" height="64" /></a>
+		<a href="https://toestand.be/" class="smallink" rel="external" title="Toestand" alt="Toestand logo"><svg
+				width="64" height="64" viewBox="0 0 14 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path
+					d="M14 2.7057V0H0V2.7057H5.64341V6.38546H0V9.09116H5.64341V21.7538H8.35659V9.09116H14V6.38546H8.35659V2.7057H14Z"
+					fill="black" />
+			</svg>
 		</a>
+		<a href="https://www.artsinsocietyaward.be/" class="smallink" rel="external" title="Arts in Society Awards"><img
+				alt="Arts in Society Awards logo" src="aisa_logo.png" height="64" /></a>
 	</footer>
 </body>
 
