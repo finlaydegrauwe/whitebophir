@@ -603,7 +603,7 @@ Tools.colorPresets.forEach(Tools.HTML.addColorButton.bind(Tools.HTML));
 
 Tools.sizeChangeHandlers = [];
 Tools.setSize = (function size() {
-	chooser = 5; //defaultsize
+	chooser = 2; //defaultsize
 
 	function update() {
 		var size = Math.max(1, Math.min(50, chooser | 0));

@@ -184,5 +184,5 @@
         "helpText": "click_to_zoom",
         "showMarker": true,
     };
-    /*Tools.add(zoomTool);*/
+    Tools.add(zoomTool);
 })(); //End of code isolation
